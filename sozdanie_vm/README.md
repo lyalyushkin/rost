@@ -93,3 +93,26 @@ Add-LocalGroupMember -Group "Remote Desktop Users" -Member 'a.petrov'
 Чтобы проверить, что на компьютере открыт RDP порт, воспользуйтесь командлетом Test-NetConnection:
 
 Test-NetConnection -ComputerName deskcomp323 -CommonTCPPort rdp
+
+Добавить локального пользователя
+```
+New-LocalUser -Name "rs042_admin"
+```
+Чтобы установить флаг «Срок действия пароля пользователя не истекает» («Password never expired»), выполните:
+```
+Set-LocalUser -Name rs042_admin –PasswordNeverExpires $True
+```
+Добавить пользователя в группу
+```
+Add-LocalGroupMember -Group 'Администраторы' -Member ('rs042_admin') -Verbose
+```
+Чтобы изменить пароль существующего пользователя, выполните команду:
+```
+$Password = Read-Host -AsSecureString
+Set-LocalUser -Name Администратор -Password $UserPassword –Verbose
+```
+
+Отключить учетную запись
+```
+Disable-LocalUser -Name Администратор
+```
