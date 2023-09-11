@@ -27,5 +27,24 @@ Status   Name               DisplayName
 ------   ----               -----------
 Running  Zabbix Agent       Zabbix Agent
 ```
+## Проверка получения данных агентомФ
+В файл `C:\Program Files\Zabbix Agent\zabbix_agentd.d\zabbix_agentd_rds.conf` добавить строку (разрешаем локальное подключение)
+```
+Server=10.77.1.41,127.0.0.1
+```
+Перезапустить агента zabbix:
+```
+Get-Service "Zabbix Agent"| Restart-Service -force
+```
+Проверить получение данных агентом:
+```
+zabbix_get -s 127.0.0.1 -p 10050 -k ActiveRDSSessions
+```
+Вывод:
+```
+C:\Windows\system32>zabbix_get -s 127.0.0.1 -p 10050 -k ActiveRDSSessions
+1
+```
+
 ## Подключить шаблон в zabbix
 К узлу сети нужно подключить шаблон `RDS`
