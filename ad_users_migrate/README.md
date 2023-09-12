@@ -247,4 +247,4 @@ foreach ($User in $Users) {
     }
 }
 ```
-
+https://www.alitajran.com/import-ad-users-from-csv-powershell/
