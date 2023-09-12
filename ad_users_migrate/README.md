@@ -55,7 +55,7 @@ function Get-OUFromDistinguishedName {
 # Set distinguishedName as searchbase, you can use one OU or multiple OUs
 # Or use the root domain like DC=exoip,DC=local
 $DNs = @(
-    "OU=ТК Овощи Краснодарского Края (ОКК),OU=РОСТ,DC=rost,DC=local"#,
+    "OU=Нужный ОУ,DC=rost,DC=local"#,
 #    "OU=IT,OU=Users,OU=Company,DC=exoip,DC=local",
 #    "OU=Finance,OU=Users,OU=Company,DC=exoip,DC=local"
 )
