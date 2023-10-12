@@ -20,11 +20,11 @@ Add-WindowsFeature RSAT-AD-PowerShell
 ```
 Установить учетную запись MSA/gMSA на сервере: 
 ```
-Install-ADServiceAccount -Identity gmsaMskSQL1
+Install-ADServiceAccount -Identity msaRS037Tasks
 ```
 Проверить, сервисная учетная запись установлена корректно: 
 ```
-Test-ADServiceAccount gmsaMskSQL1
+Test-ADServiceAccount msaRS037Tasks
 ```
 Если команда вернет True – все настроено правильно. 
 
