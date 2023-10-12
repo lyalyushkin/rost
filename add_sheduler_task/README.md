@@ -39,11 +39,11 @@ Get-Service|where -Property Name -Like "1*"|ft -Property Name
 ```
 Зарегистрировать задание
 ```
-$action = New-ScheduledTaskAction -Execute powershell.exe  -Argument "-NoProfile -Command ""&{Stop-Service '1C:Enterprise 8.3 Server Agent (ERPWORK)';Start-Sleep -Seconds 60;Start-Service '1C:Enterprise 8.3 Server Agent (ERPWORK)'}"""
-
-$trigger = New-ScheduledTaskTrigger -At 04:00 -Daily
-$principal = New-ScheduledTaskPrincipal -UserID rostgroup\msaRS037Task$ -LogonType Password
-Register-ScheduledTask "1C agent ERPWORK_PUB" -Action $action -Trigger $trigger -Principal $principal
+$trigger = New-ScheduledTaskTrigger -At 03:55 -Daily
+$principal = New-ScheduledTaskPrincipal -UserID rostgroup\msaRS037Tasks$ -LogonType Password
+$serviceName = "1C Server 1541"
+$action = New-ScheduledTaskAction -Execute powershell.exe  -Argument "-NoProfile -Command ""&{Stop-Service '$serviceName';Start-Sleep -Seconds 60;Start-Service '$serviceName'}"""
+Register-ScheduledTask "1C Server 1541" -Action $action -Trigger $trigger -Principal $principal
 ```
 Изменить задание
 ```
