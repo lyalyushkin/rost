@@ -43,7 +43,7 @@ $trigger = New-ScheduledTaskTrigger -At 03:55 -Daily
 $principal = New-ScheduledTaskPrincipal -UserID rostgroup\msaRS037Tasks$ -LogonType Password
 $serviceName = "1C Server 1541"
 $action = New-ScheduledTaskAction -Execute powershell.exe  -Argument "-NoProfile -Command ""&{Stop-Service '$serviceName';Start-Sleep -Seconds 60;Start-Service '$serviceName'}"""
-Register-ScheduledTask "1C Server 1541" -Action $action -Trigger $trigger -Principal $principal
+Register-ScheduledTask $serviceName -Action $action -Trigger $trigger -Principal $principal
 ```
 Изменить задание
 ```
